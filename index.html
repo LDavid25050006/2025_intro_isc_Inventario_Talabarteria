@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es" xmlns="http://www.w3.org/1999/html">
+<head> <!-- Define metadatos, como se adapta a pantallas pequeñas, titulo de la pestaña del navegador, enlaza el archivo CSS externo -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sistema de inventario</title>
+    <link rel = "stylesheet" href="style.css"/>
+</head>
+<body> <!-- Contiene lo que el usuario ve en la pagina -->
+    <header> <!-- Muestra el titulo principal -->
+        <h1>Sistema de inventario</h1>
+    </header>
+
+    <main>
+        <section id="form-section">
+            <h2>Agregar Productos</h2>
+            <form id="item-form">
+                <input type="text" id="nombre" placeholder="Nombre del producto" required />
+                <input type="number" id="cantidad" placeholder="Cantidad" required />
+                <input type="number" id="precio" placeholder="Precio" required />
+                <button type="submit" id="submit-btn">Agregar Productos </button>
+                <button type="button" id="cancel-btn" style="display: none;">Cancelar</button>
+            </form>
+        </section>
+
+        <section id="list-section">
+            <h2>Inventario</h2>
+            <p id="empty-message">No hay items en el inventario</p>
+            <table id="inventory-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                <!-- Aqui se insertaran los items -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="inventario.js"></script>
+</body>
+</html>
