@@ -60,6 +60,7 @@ form.addEventListener('submit', function (e) {
 
     if (modoEdicion) {
         updateItem(idEditando, nombre, cantidad, precio);
+        registrarMovimiento('editado',{nombre, cantidad, precio});
     } else {
         const nuevoItem = {
             id: Date.now(),
@@ -68,9 +69,9 @@ form.addEventListener('submit', function (e) {
             precio
         };
         inventario.push(nuevoItem);
+        registrarMovimiento('agregado', nuevoItem);
         renderItems();
         form.reset();
-        renderItems('agregado', nuevoItem);
     }
 });
 
@@ -91,7 +92,7 @@ function updateItem(id, nombre, cantidad, precio) {
     if (index === -1) return;
 
     inventario[index] = {id, nombre, cantidad, precio};
-    renderItems('agregado', nuevoItem);
+
     modoEdicion = false;
     idEditando = null;
     submitBtn.textContent = 'Agregar';
@@ -132,5 +133,5 @@ function registrarMovimiento(tipo, item) {
         hora: fecha.toLocalTimeString('es-MX'),
         mes: fecha.getMonth() + 1,
         año: fecha.getFullYear()
-    })
+    });
 }
